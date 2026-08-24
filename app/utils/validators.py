@@ -4,7 +4,7 @@ from app.exceptions import InvalidMemberDataError
 
 
 def validate_name(name):
-    name= name.stripe()
+    name= name.strip()
 
     if name =="":
         raise InvalidMemberDataError("Name cannot be empty.")
@@ -15,7 +15,7 @@ def validate_name(name):
     return name
 
 def validate_phone(phone):
-    phone=phone.stripe()
+    phone=phone.strip()
 
     if not re.fullmatch(r"09\d{8}", phone):
         raise InvalidMemberDataError("Invalid phone number.")
@@ -23,7 +23,7 @@ def validate_phone(phone):
     return phone
 
 def validate_email(email):
-    email= email.stripe().lower()
+    email= email.strip().lower()
 
     if not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
         raise InvalidMemberDataError("Invalid email.")

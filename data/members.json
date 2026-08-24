@@ -1,1 +1,18 @@
-[]
+[
+    {
+        "member_id": "M001",
+        "full_name": "mnbv",
+        "phone": "0987654321",
+        "email": "mbnv@gmail.com",
+        "date_joined": "2026-08-24",
+        "status": "ACTIVE"
+    },
+    {
+        "member_id": "M002",
+        "full_name": "kebedede",
+        "phone": "0954672318",
+        "email": "mskdch@gmail.com",
+        "date_joined": "2026-08-24",
+        "status": "INACTIVE"
+    }
+]

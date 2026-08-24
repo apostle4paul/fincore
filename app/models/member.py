@@ -15,7 +15,7 @@ class Member:
         self.full_name= full_name
         self.phone=phone
         self.email=email
-        self.date_joined= date_joined | date.today().isoformat()
+        self.date_joined= date_joined or date.today().isoformat()
         self.status= status
 
 # converts the object received to dictionary (key value pair)
@@ -29,6 +29,7 @@ class Member:
         "status": self.status,
         }
 #  converts the dictionary to object and it is a class method
+    @classmethod
     def from_dict(cls, data:dict):
         return cls(
             member_id=data["member_id"],
