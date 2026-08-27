@@ -18,5 +18,35 @@
         "description": "Withdrawal",
         "timestamp": "2026-08-27T14:21:00",
         "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T003",
+        "account_number": "A001",
+        "transaction_type": "DEPOSIT",
+        "amount": 234.0,
+        "balance_after": 1029.0,
+        "description": "Deposit",
+        "timestamp": "2026-08-27T15:22:40",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T004",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 1000.0,
+        "balance_after": 29.0,
+        "description": "Withdrawal",
+        "timestamp": "2026-08-27T15:22:52",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T005",
+        "account_number": "A001",
+        "transaction_type": "DEPOSIT",
+        "amount": 1000.0,
+        "balance_after": 1029.0,
+        "description": "Deposit",
+        "timestamp": "2026-08-27T15:23:47",
+        "status": "COMPLETED"
     }
 ]

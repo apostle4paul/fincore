@@ -2,6 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.members import router as member_router
+from app.api.account_routes import router as account_router
+from app.api.transaction_routes import router as transaction_router
+from app.api.loan_routes import router as loan_router
+
 
 app = FastAPI()
 
@@ -16,3 +20,7 @@ app.include_router(
     member_router,
     prefix="/members"
 )
+
+app.include_router(account_router)
+app.include_router(transaction_router)
+app.include_router(loan_router)
