@@ -32,15 +32,11 @@
   display: flex;
   align-items: center;
   gap: 7px;
-
   padding: 10px 16px;
-
   border: none;
   border-radius: 7px;
-
   background: #2563eb;
   color: white;
-
   font-weight: 600;
   cursor: pointer;
 }
@@ -49,7 +45,6 @@
   background: #1d4ed8;
 }
 
-
 /* Search */
 
 .search {
@@ -57,40 +52,33 @@
 }
 
 .search input {
-  width: 320px;
+  width: 400px;
   padding: 10px 12px;
-
   border: 1px solid #e2e8f0;
   border-radius: 7px;
-
   outline: none;
   font-size: 13px;
 }
-
 
 /* Table */
 
 .tableCard {
   overflow-x: auto;
-
   background: white;
-
   border: 1px solid #e2e8f0;
   border-radius: 10px;
 }
 
 table {
   width: 100%;
+  min-width: 1000px;
   border-collapse: collapse;
 }
 
 th {
   padding: 13px 18px;
-
   background: #f8fafc;
-
   color: #64748b;
-
   font-size: 11px;
   text-align: left;
   text-transform: uppercase;
@@ -98,9 +86,7 @@ th {
 
 td {
   padding: 15px 18px;
-
   border-top: 1px solid #f1f5f9;
-
   color: #334155;
   font-size: 13px;
 }
@@ -118,42 +104,54 @@ td {
 
 .status {
   padding: 5px 9px;
-
   border-radius: 15px;
-
   background: #dcfce7;
   color: #15803d;
-
   font-size: 11px;
   font-weight: 600;
 }
 
+.empty {
+  padding: 40px;
+  text-align: center;
+  color: #64748b;
+}
 
 /* Form */
 
 .overlay {
   position: fixed;
   inset: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: #00000040;
+  z-index: 100;
 }
 
 .form {
   width: 370px;
   padding: 24px;
-
   background: white;
   border-radius: 10px;
 }
 
-.form h2 {
-  margin-bottom: 18px;
+.formHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.formHeader h2 {
   color: #111827;
   font-size: 20px;
+}
+
+.formHeader button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .typeButtons {
@@ -165,10 +163,8 @@ td {
 .typeButtons button {
   flex: 1;
   padding: 9px;
-
   border: 1px solid #e2e8f0;
   border-radius: 6px;
-
   background: white;
   cursor: pointer;
 }
@@ -186,41 +182,41 @@ td {
 
 .form label {
   margin-top: 8px;
-
   color: #475569;
   font-size: 13px;
 }
 
 .form input {
   padding: 10px;
-
   border: 1px solid #dbe2ea;
   border-radius: 6px;
-
   outline: none;
+}
+
+.form input:focus {
+  border-color: #2563eb;
 }
 
 .saveButton {
   margin-top: 15px;
   padding: 10px;
-
   border: none;
   border-radius: 6px;
-
   background: #2563eb;
   color: white;
-
   font-weight: 600;
   cursor: pointer;
 }
 
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .cancelButton {
   padding: 10px;
-
   border: none;
   background: transparent;
-
   color: #64748b;
-
   cursor: pointer;
 }

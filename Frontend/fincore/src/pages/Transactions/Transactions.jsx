@@ -1,39 +1,33 @@
-import { useState } from "react";
-import { Plus, ArrowDownLeft, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  Plus,
+  ArrowDownLeft,
+  ArrowUpRight,
+  X
+} from "lucide-react";
+
 import styles from "./Transactions.module.css";
+
+
+const API = "http://localhost:8000";
+
 
 const Transactions = () => {
 
-  const [transactions, setTransactions] = useState([
-    {
-      id: "T001",
-      account: "A001",
-      type: "Deposit",
-      amount: 5000,
-      description: "Cash deposit",
-      status: "Completed"
-    },
-    {
-      id: "T002",
-      account: "A002",
-      type: "Withdrawal",
-      amount: 2000,
-      description: "ATM withdrawal",
-      status: "Completed"
-    },
-    {
-      id: "T003",
-      account: "A001",
-      type: "Deposit",
-      amount: 3500,
-      description: "Salary",
-      status: "Completed"
-    }
-  ]);
+  const [transactions, setTransactions] =
+    useState([]);
 
-  const [search, setSearch] = useState("");
-  const [showForm, setShowForm] = useState(false);
-  const [type, setType] = useState("Deposit");
+  const [search, setSearch] =
+    useState("");
+
+  const [showForm, setShowForm] =
+    useState(false);
+
+  const [type, setType] =
+    useState("Deposit");
+
+  const [loading, setLoading] =
+    useState(false);
 
   const [form, setForm] = useState({
     account: "",
@@ -42,37 +36,231 @@ const Transactions = () => {
   });
 
 
-  const filteredTransactions = transactions.filter((transaction) =>
-    transaction.id.toLowerCase().includes(search.toLowerCase()) ||
-    transaction.account.toLowerCase().includes(search.toLowerCase())
-  );
+  // Load transactions
+  const loadTransactions = async () => {
+
+    try {
+
+      const response = await fetch(
+        `${API}/transactions`
+      );
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+      if (!response.ok) {
 
-    const transaction = {
-      id: `T00${transactions.length + 1}`,
-      account: form.account.toUpperCase(),
-      type,
-      amount: Number(form.amount),
-      description: form.description || type,
-      status: "Completed"
-    };
+        throw new Error(
+          "Failed to load transactions."
+        );
+      }
 
-    setTransactions([...transactions, transaction]);
+
+      const data =
+        await response.json();
+
+
+      setTransactions(
+        Array.isArray(data)
+          ? data
+          : []
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "Transaction error:",
+        error
+      );
+
+      alert(
+        "Could not load transactions."
+      );
+    }
+  };
+
+
+  useEffect(() => {
+
+    loadTransactions();
+
+  }, []);
+
+
+  // Search
+  const filteredTransactions =
+    transactions.filter(
+      (transaction) => {
+
+        const query =
+          search
+            .toLowerCase()
+            .trim();
+
+
+        return (
+
+          transaction.transaction_id
+            .toLowerCase()
+            .includes(query)
+
+          ||
+
+          transaction.account_number
+            .toLowerCase()
+            .includes(query)
+
+          ||
+
+          transaction.transaction_type
+            .toLowerCase()
+            .includes(query)
+
+          ||
+
+          transaction.description
+            .toLowerCase()
+            .includes(query)
+
+        );
+      }
+    );
+
+
+  // Form change
+  const handleChange = (e) => {
+
+    const {
+      name,
+      value
+    } = e.target;
+
 
     setForm({
-      account: "",
-      amount: "",
-      description: ""
+      ...form,
+      [name]: value
     });
+  };
 
-    setShowForm(false);
+
+  // Create transaction
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+
+    if (
+      !form.account.trim()
+    ) {
+
+      alert(
+        "Please enter an account number."
+      );
+
+      return;
+    }
+
+
+    const numericAmount =
+      Number(form.amount);
+
+
+    if (
+      !numericAmount ||
+      numericAmount <= 0
+    ) {
+
+      alert(
+        "Amount must be greater than zero."
+      );
+
+      return;
+    }
+
+
+    setLoading(true);
+
+
+    const endpoint =
+      type === "Deposit"
+        ? "/transactions/deposit"
+        : "/transactions/withdraw";
+
+
+    try {
+
+      const response = await fetch(
+        `${API}${endpoint}`,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body: JSON.stringify({
+            account_number:
+              form.account
+                .trim()
+                .toUpperCase(),
+
+            amount:
+              numericAmount,
+
+            description:
+              form.description.trim() ||
+              type
+          })
+        }
+      );
+
+
+      const data =
+        await response.json();
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          data.detail ||
+          "Transaction failed."
+        );
+      }
+
+
+      // Reset form
+      setForm({
+        account: "",
+        amount: "",
+        description: ""
+      });
+
+
+      setShowForm(false);
+
+
+      // Get latest transactions
+      await loadTransactions();
+
+
+      alert(
+        `${type} completed successfully.`
+      );
+
+
+    } catch (error) {
+
+      alert(error.message);
+
+    } finally {
+
+      setLoading(false);
+    }
   };
 
 
   return (
+
     <div className={styles.page}>
 
       {/* Header */}
@@ -80,21 +268,35 @@ const Transactions = () => {
       <div className={styles.header}>
 
         <div>
-          <p className={styles.label}>Banking</p>
 
-          <h1>Transactions</h1>
+          <p className={styles.label}>
+            Banking
+          </p>
+
+          <h1>
+            Transactions
+          </h1>
 
           <p>
             View deposits, withdrawals and transaction history.
           </p>
+
         </div>
 
+
         <button
-          className={styles.addButton}
-          onClick={() => setShowForm(true)}
+          className={
+            styles.addButton
+          }
+          onClick={() =>
+            setShowForm(true)
+          }
         >
+
           <Plus size={17} />
+
           New Transaction
+
         </button>
 
       </div>
@@ -102,80 +304,246 @@ const Transactions = () => {
 
       {/* Search */}
 
-      <div className={styles.search}>
+      <div
+        className={
+          styles.search
+        }
+      >
+
         <input
           type="text"
-          placeholder="Search Transaction ID or Account ID..."
+          placeholder="Search Transaction ID, Account or Type..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) =>
+            setSearch(
+              e.target.value
+            )
+          }
         />
+
       </div>
 
 
       {/* Table */}
 
-      <div className={styles.tableCard}>
+      <div
+        className={
+          styles.tableCard
+        }
+      >
 
         <table>
 
           <thead>
+
             <tr>
-              <th>ID</th>
-              <th>Account</th>
-              <th>Type</th>
-              <th>Amount</th>
-              <th>Description</th>
-              <th>Status</th>
+
+              <th>
+                ID
+              </th>
+
+              <th>
+                Account
+              </th>
+
+              <th>
+                Type
+              </th>
+
+              <th>
+                Amount
+              </th>
+
+              <th>
+                Balance After
+              </th>
+
+              <th>
+                Description
+              </th>
+
+              <th>
+                Date
+              </th>
+
+              <th>
+                Status
+              </th>
+
             </tr>
+
           </thead>
+
 
           <tbody>
 
-            {filteredTransactions.map((transaction) => (
+            {filteredTransactions.map(
+              (transaction) => {
 
-              <tr key={transaction.id}>
+                const isDeposit =
+                  transaction.transaction_type ===
+                  "DEPOSIT";
 
-                <td className={styles.transactionId}>
-                  {transaction.id}
-                </td>
 
-                <td>
-                  {transaction.account}
-                </td>
+                return (
 
-                <td>
+                  <tr
+                    key={
+                      transaction.transaction_id
+                    }
+                  >
 
-                  <span className={styles.type}>
+                    <td
+                      className={
+                        styles.transactionId
+                      }
+                    >
 
-                    {transaction.type === "Deposit" ? (
-                      <ArrowDownLeft size={14} />
-                    ) : (
-                      <ArrowUpRight size={14} />
-                    )}
+                      {
+                        transaction.transaction_id
+                      }
 
-                    {transaction.type}
+                    </td>
 
-                  </span>
 
-                </td>
+                    <td>
 
-                <td>
-                  ETB {transaction.amount.toLocaleString()}
-                </td>
+                      {
+                        transaction.account_number
+                      }
 
-                <td>
-                  {transaction.description}
-                </td>
+                    </td>
 
-                <td>
-                  <span className={styles.status}>
-                    {transaction.status}
-                  </span>
+
+                    <td>
+
+                      <span
+                        className={
+                          styles.type
+                        }
+                      >
+
+                        {isDeposit ? (
+
+                          <ArrowDownLeft
+                            size={14}
+                          />
+
+                        ) : (
+
+                          <ArrowUpRight
+                            size={14}
+                          />
+
+                        )}
+
+
+                        {isDeposit
+                          ? "Deposit"
+                          : "Withdrawal"}
+
+                      </span>
+
+                    </td>
+
+
+                    <td>
+
+                      ETB{" "}
+
+                      {Number(
+                        transaction.amount
+                      ).toLocaleString(
+                        undefined,
+                        {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2
+                        }
+                      )}
+
+                    </td>
+
+
+                    <td>
+
+                      ETB{" "}
+
+                      {Number(
+                        transaction.balance_after
+                      ).toLocaleString(
+                        undefined,
+                        {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2
+                        }
+                      )}
+
+                    </td>
+
+
+                    <td>
+
+                      {
+                        transaction.description
+                      }
+
+                    </td>
+
+
+                    <td>
+
+                      {transaction.timestamp
+                        ? new Date(
+                            transaction.timestamp
+                          ).toLocaleString()
+                        : "-"}
+
+                    </td>
+
+
+                    <td>
+
+                      <span
+                        className={
+                          styles.status
+                        }
+                      >
+
+                        {
+                          transaction.status
+                        }
+
+                      </span>
+
+                    </td>
+
+                  </tr>
+
+                );
+              }
+            )}
+
+
+            {!filteredTransactions.length && (
+
+              <tr>
+
+                <td
+                  colSpan="8"
+                  className={
+                    styles.empty
+                  }
+                >
+
+                  {search
+                    ? "No matching transactions found."
+                    : "No transactions found."}
+
                 </td>
 
               </tr>
 
-            ))}
+            )}
 
           </tbody>
 
@@ -184,30 +552,83 @@ const Transactions = () => {
       </div>
 
 
-      {/* Transaction Form */}
+      {/* New Transaction Modal */}
 
       {showForm && (
 
-        <div className={styles.overlay}>
+        <div
+          className={
+            styles.overlay
+          }
+        >
 
-          <div className={styles.form}>
+          <div
+            className={
+              styles.form
+            }
+          >
 
-            <h2>New Transaction</h2>
+            <div
+              className={
+                styles.formHeader
+              }
+            >
 
-            <div className={styles.typeButtons}>
+              <h2>
+                New Transaction
+              </h2>
+
+
+              <button
+                onClick={() =>
+                  setShowForm(false)
+                }
+              >
+
+                <X size={20} />
+
+              </button>
+
+            </div>
+
+
+            {/* Transaction Type */}
+
+            <div
+              className={
+                styles.typeButtons
+              }
+            >
 
               <button
                 type="button"
-                className={type === "Deposit" ? styles.selected : ""}
-                onClick={() => setType("Deposit")}
+                className={
+                  type === "Deposit"
+                    ? styles.selected
+                    : ""
+                }
+                onClick={() =>
+                  setType(
+                    "Deposit"
+                  )
+                }
               >
                 Deposit
               </button>
 
+
               <button
                 type="button"
-                className={type === "Withdrawal" ? styles.selected : ""}
-                onClick={() => setType("Withdrawal")}
+                className={
+                  type === "Withdrawal"
+                    ? styles.selected
+                    : ""
+                }
+                onClick={() =>
+                  setType(
+                    "Withdrawal"
+                  )
+                }
               >
                 Withdraw
               </button>
@@ -215,69 +636,97 @@ const Transactions = () => {
             </div>
 
 
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={
+                handleSubmit
+              }
+            >
 
-              <label>Account ID</label>
+              <label>
+                Account Number
+              </label>
+
 
               <input
                 type="text"
+                name="account"
                 placeholder="A001"
                 required
-                value={form.account}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    account: e.target.value
-                  })
+                value={
+                  form.account
+                }
+                onChange={
+                  handleChange
                 }
               />
 
 
-              <label>Amount</label>
+              <label>
+                Amount
+              </label>
+
 
               <input
                 type="number"
-                min="1"
+                name="amount"
+                min="0.01"
+                step="0.01"
                 placeholder="Enter amount"
                 required
-                value={form.amount}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    amount: e.target.value
-                  })
+                value={
+                  form.amount
+                }
+                onChange={
+                  handleChange
                 }
               />
 
 
-              <label>Description</label>
+              <label>
+                Description
+              </label>
+
 
               <input
                 type="text"
+                name="description"
                 placeholder="Optional"
-                value={form.description}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    description: e.target.value
-                  })
+                value={
+                  form.description
+                }
+                onChange={
+                  handleChange
                 }
               />
 
 
               <button
                 type="submit"
-                className={styles.saveButton}
+                className={
+                  styles.saveButton
+                }
+                disabled={loading}
               >
-                {type}
+
+                {loading
+                  ? "Processing..."
+                  : type}
+
               </button>
+
 
               <button
                 type="button"
-                className={styles.cancelButton}
-                onClick={() => setShowForm(false)}
+                className={
+                  styles.cancelButton
+                }
+                onClick={() =>
+                  setShowForm(false)
+                }
               >
+
                 Cancel
+
               </button>
 
             </form>
@@ -291,5 +740,6 @@ const Transactions = () => {
     </div>
   );
 };
+
 
 export default Transactions;

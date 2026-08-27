@@ -14,6 +14,7 @@
   font-size: 12px;
   font-weight: 700;
   margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
 .header h1 {
@@ -31,6 +32,7 @@
 .saveButton {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
   padding: 10px 16px;
   border: none;
@@ -39,6 +41,16 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+}
+
+.addButton:hover,
+.saveButton:hover {
+  background: #1d4ed8;
+}
+
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .tableCard {
@@ -50,6 +62,7 @@
 
 table {
   width: 100%;
+  min-width: 800px;
   border-collapse: collapse;
 }
 
@@ -59,6 +72,7 @@ th {
   color: #64748b;
   font-size: 11px;
   text-align: left;
+  text-transform: uppercase;
 }
 
 td {
@@ -95,34 +109,49 @@ td {
   position: relative;
 }
 
-.actions button {
+.actions > button {
   border: none;
   background: none;
   cursor: pointer;
+  color: #64748b;
+}
+
+.actions > button:hover {
+  color: #111827;
 }
 
 .menu {
   position: absolute;
   right: 10px;
   top: 35px;
-  width: 110px;
+  width: 130px;
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 7px;
   box-shadow: 0 4px 12px #0002;
-  z-index: 5;
+  z-index: 20;
+  overflow: hidden;
 }
 
 .menu button {
   display: block;
   width: 100%;
-  padding: 9px;
+  padding: 10px;
   text-align: left;
+  border: none;
+  background: white;
+  cursor: pointer;
+  color: #334155;
+}
+
+.menu button:hover {
+  background: #f8fafc;
 }
 
 .empty {
   text-align: center;
   padding: 40px;
+  color: #64748b;
 }
 
 .overlay {
@@ -132,6 +161,7 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100;
 }
 
 .form {
@@ -144,7 +174,12 @@ td {
 .formHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
+}
+
+.formHeader h2 {
+  color: #111827;
 }
 
 .formHeader button {
@@ -159,13 +194,43 @@ td {
   gap: 10px;
 }
 
+.form label {
+  color: #475569;
+  font-size: 13px;
+}
+
 .form input {
   padding: 10px;
   border: 1px solid #dbe2ea;
   border-radius: 6px;
+  outline: none;
+}
+
+.form input:focus {
+  border-color: #2563eb;
+}
+
+.form input:disabled {
+  background: #f8fafc;
+  color: #64748b;
 }
 
 .saveButton {
   margin-top: 10px;
-  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding: 20px;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form {
+    width: calc(100% - 40px);
+  }
 }

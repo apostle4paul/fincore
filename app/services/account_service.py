@@ -13,7 +13,6 @@ from app.utils.id_generator import generate_id
 from app.exceptions import (
     AccountNotFoundError,
     InvalidAccountDataError,
-    InsufficientBalanceError,
     MemberNotFoundForAccountError
 )
 
@@ -42,7 +41,8 @@ class AccountService:
         account_type="SAVINGS"
     ):
 
-        # Check that member exists
+        member_id = member_id.strip().upper()
+
         member = self.member_repository.get_by_id(
             member_id
         )
@@ -59,7 +59,6 @@ class AccountService:
                 "Only SAVINGS accounts are supported."
             )
 
-        # Get existing account numbers
         accounts = self.account_repository.get_all()
 
         existing_ids = [
@@ -67,7 +66,6 @@ class AccountService:
             for account in accounts
         ]
 
-        # Generate A001, A002, A003...
         account_number = generate_id(
             "A",
             existing_ids
@@ -83,7 +81,12 @@ class AccountService:
             account
         )
 
-    def get_account(self, account_number):
+    def get_account(
+        self,
+        account_number
+    ):
+
+        account_number = account_number.strip().upper()
 
         account = self.account_repository.get_by_number(
             account_number
@@ -96,7 +99,12 @@ class AccountService:
 
         return account
 
-    def get_member_accounts(self, member_id):
+    def get_member_accounts(
+        self,
+        member_id
+    ):
+
+        member_id = member_id.strip().upper()
 
         member = self.member_repository.get_by_id(
             member_id
@@ -111,10 +119,9 @@ class AccountService:
             member_id
         )
 
-    def deposit(
+    def close_account(
         self,
-        account_number,
-        amount
+        account_number
     ):
 
         account = self.get_account(
@@ -123,56 +130,8 @@ class AccountService:
 
         if account.status != "ACTIVE":
             raise InvalidAccountDataError(
-                "Cannot deposit into an inactive account."
+                "Account is already inactive."
             )
-
-        if amount <= 0:
-            raise InvalidAccountDataError(
-                "Deposit amount must be greater than zero."
-            )
-
-        account.balance += amount
-
-        return self.account_repository.update(
-            account
-        )
-
-    def withdraw(
-        self,
-        account_number,
-        amount
-    ):
-
-        account = self.get_account(
-            account_number
-        )
-
-        if account.status != "ACTIVE":
-            raise InvalidAccountDataError(
-                "Cannot withdraw from an inactive account."
-            )
-
-        if amount <= 0:
-            raise InvalidAccountDataError(
-                "Withdrawal amount must be greater than zero."
-            )
-
-        if amount > account.balance:
-            raise InsufficientBalanceError(
-                "Insufficient balance."
-            )
-
-        account.balance -= amount
-
-        return self.account_repository.update(
-            account
-        )
-
-    def close_account(self, account_number):
-
-        account = self.get_account(
-            account_number
-        )
 
         if account.balance != 0:
             raise InvalidAccountDataError(

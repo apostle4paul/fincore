@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "transaction_id": "T001",
+        "account_number": "A001",
+        "transaction_type": "DEPOSIT",
+        "amount": 12.0,
+        "balance_after": 918.0,
+        "description": "Deposit",
+        "timestamp": "2026-08-27T14:20:34",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T002",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 123.0,
+        "balance_after": 795.0,
+        "description": "Withdrawal",
+        "timestamp": "2026-08-27T14:21:00",
+        "status": "COMPLETED"
+    }
+]

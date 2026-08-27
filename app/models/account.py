@@ -15,7 +15,7 @@ class Account:
         self.account_number = account_number
         self.member_id = member_id
         self.account_type = account_type
-        self.balance = balance
+        self.balance = float(balance)
         self.status = status
         self.date_opened = (
             date_opened
