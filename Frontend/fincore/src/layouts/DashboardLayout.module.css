@@ -1,0 +1,25 @@
+.layout {
+  min-height: 100vh;
+
+  display: flex;
+
+  background: #f5f7fa;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.content {
+  min-height: calc(100vh - 72px);
+}
+.layoutWrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+
+  /* Sets the money image across the full screen smoothly */
+  background: linear-gradient(rgba(11, 19, 41, 0.65), rgba(11, 19, 41, 0.65)),
+              url('https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/14935/production/_132977248_e95e681c-089a-446d-a3f5-1fd2a4d3df22.jpg') center/cover no-repeat fixed;
+}

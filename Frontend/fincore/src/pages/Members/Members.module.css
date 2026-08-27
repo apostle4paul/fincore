@@ -1,0 +1,186 @@
+.page {
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.label {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.header h1 {
+  margin: 5px 0;
+  font-size: 30px;
+}
+
+.header p {
+  color: #64748b;
+}
+
+.addButton,
+.saveButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 11px 17px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addButton:hover,
+.saveButton:hover {
+  background: #1d4ed8;
+}
+
+.toolbar {
+  margin-bottom: 15px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 450px;
+  padding: 11px 14px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.search input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.tableCard {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+}
+
+td {
+  font-size: 14px;
+}
+
+.active,
+.inactive {
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.inactive {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.actions {
+  display: flex;
+  gap: 5px;
+}
+
+.actions button,
+.modalHeader button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.actions button:hover {
+  color: #2563eb;
+}
+
+.empty {
+  padding: 30px;
+  text-align: center;
+  color: #64748b;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 400px;
+  max-width: 90%;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modalHeader h2 {
+  margin: 0;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal input {
+  padding: 11px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.saveButton {
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.details {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}

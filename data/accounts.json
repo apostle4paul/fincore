@@ -1,0 +1,34 @@
+[
+    {
+        "account_number": "A001",
+        "member_id": "M001",
+        "account_type": "SAVINGS",
+        "balance": 650.0,
+        "status": "ACTIVE",
+        "date_opened": "2026-08-26"
+    },
+    {
+        "account_number": "A002",
+        "member_id": "M001",
+        "account_type": "SAVINGS",
+        "balance": 4.0,
+        "status": "ACTIVE",
+        "date_opened": "2026-08-26"
+    },
+    {
+        "account_number": "A003",
+        "member_id": "M002",
+        "account_type": "SAVINGS",
+        "balance": 0.0,
+        "status": "ACTIVE",
+        "date_opened": "2026-08-26"
+    },
+    {
+        "account_number": "A004",
+        "member_id": "M001",
+        "account_type": "SAVINGS",
+        "balance": 0.0,
+        "status": "ACTIVE",
+        "date_opened": "2026-08-26"
+    }
+]

@@ -1,0 +1,126 @@
+.sidebar {
+  width: 250px;
+  min-width: 250px;
+  height: 100vh;
+  padding: 24px 16px;
+
+  /* Translucent Dark Blue with Glassmorphism Blur */
+  background: rgba(11, 19, 41, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  /* Soft glowing right border to blend smoothly into the dashboard */
+  box-shadow: 8px 0 25px -5px rgba(0, 0, 0, 0.4),
+              2px 0 10px -2px rgba(37, 99, 235, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: white;
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px 24px;
+  /* Softened border for translucent dark theme */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+.logoMark {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #2563eb;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+.logoText h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.logoText span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 11px;
+}
+
+.navigation {
+  padding-top: 25px;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  margin: 0 0 8px;
+  padding: 0 12px;
+  /* Higher contrast title text for glass effect */
+  color: rgba(255, 255, 255, 0.45); 
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.navItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.active {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    width: 70px;
+    min-width: 70px;
+    padding: 20px 10px;
+  }
+
+  .logo {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .logoText,
+  .sectionTitle,
+  .navItem span {
+    display: none;
+  }
+
+  .navItem {
+    justify-content: center;
+  }
+}

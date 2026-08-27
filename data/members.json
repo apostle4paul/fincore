@@ -1,18 +1,26 @@
 [
     {
         "member_id": "M001",
-        "full_name": "mnbv",
-        "phone": "0987654321",
-        "email": "mbnv@gmail.com",
+        "full_name": "DAWITttttttt",
+        "phone": "0987623451",
+        "email": "dawit23@gmail.com",
         "date_joined": "2026-08-24",
-        "status": "ACTIVE"
+        "status": "INACTIVE"
     },
     {
         "member_id": "M002",
-        "full_name": "kebedede",
+        "full_name": "kebededeeeeeeeeee",
         "phone": "0954672318",
         "email": "mskdch@gmail.com",
         "date_joined": "2026-08-24",
         "status": "INACTIVE"
+    },
+    {
+        "member_id": "M003",
+        "full_name": "meet",
+        "phone": "0948362718",
+        "email": "mcmd@gmail.com",
+        "date_joined": "2026-08-26",
+        "status": "ACTIVE"
     }
 ]

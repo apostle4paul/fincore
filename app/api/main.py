@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.members import router as member_router
+from app.api.members import router
 
 app = FastAPI()
 
@@ -12,7 +12,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(
-    member_router,
-    prefix="/members"
-)
+app.include_router(router)

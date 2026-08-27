@@ -12,6 +12,10 @@ htmlcov/
 .vscode/
 .idea/
 
+# Node
+node_modules/
+Frontend/node_modules/
+
 .DS_Store
 Thumbs.db
 

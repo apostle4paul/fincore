@@ -1,0 +1,171 @@
+.page {
+  padding: 32px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.label {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.header h1 {
+  color: #111827;
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.addButton,
+.saveButton {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 7px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tableCard {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 13px 18px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 11px;
+  text-align: left;
+}
+
+td {
+  padding: 15px 18px;
+  border-top: 1px solid #f1f5f9;
+  color: #334155;
+  font-size: 13px;
+}
+
+.accountId {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.active,
+.inactive {
+  padding: 5px 9px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.inactive {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.actions {
+  position: relative;
+}
+
+.actions button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  right: 10px;
+  top: 35px;
+  width: 110px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  box-shadow: 0 4px 12px #0002;
+  z-index: 5;
+}
+
+.menu button {
+  display: block;
+  width: 100%;
+  padding: 9px;
+  text-align: left;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #0006;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: 380px;
+  padding: 24px;
+  background: white;
+  border-radius: 10px;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.formHeader button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form input {
+  padding: 10px;
+  border: 1px solid #dbe2ea;
+  border-radius: 6px;
+}
+
+.saveButton {
+  margin-top: 10px;
+  justify-content: center;
+}

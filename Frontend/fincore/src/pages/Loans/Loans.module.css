@@ -1,0 +1,230 @@
+.page {
+  padding: 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.label {
+  margin-bottom: 6px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin-bottom: 6px;
+  color: #111827;
+  font-size: 28px;
+}
+
+.header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background: #1d4ed8;
+}
+
+
+/* Search */
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.toolbar input,
+.toolbar select {
+  padding: 10px 12px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+
+  background: white;
+  outline: none;
+}
+
+.toolbar input {
+  width: 300px;
+}
+
+
+/* Table */
+
+.tableCard {
+  overflow-x: auto;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 13px 18px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 11px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 15px 18px;
+
+  border-top: 1px solid #f1f5f9;
+
+  color: #334155;
+  font-size: 13px;
+}
+
+.loanId {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.active,
+.paid {
+  padding: 5px 9px;
+
+  border-radius: 15px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.active {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.paid {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+
+/* Action */
+
+.actions button {
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+
+
+/* Modal */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #00000040;
+}
+
+.form {
+  width: 370px;
+
+  padding: 24px;
+
+  background: white;
+  border-radius: 10px;
+}
+
+.form h2 {
+  margin-bottom: 18px;
+  color: #111827;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form label {
+  margin-top: 8px;
+  color: #475569;
+  font-size: 13px;
+}
+
+.form input {
+  padding: 10px;
+
+  border: 1px solid #dbe2ea;
+  border-radius: 6px;
+
+  outline: none;
+}
+
+.form p {
+  margin-bottom: 10px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.saveButton {
+  margin-top: 15px;
+
+  padding: 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancelButton {
+  margin-top: 10px;
+
+  padding: 10px;
+
+  border: none;
+  background: transparent;
+
+  color: #64748b;
+
+  cursor: pointer;
+}

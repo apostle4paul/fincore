@@ -1,0 +1,190 @@
+.page {
+  padding: 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.label {
+  margin-bottom: 6px;
+
+  color: #2563eb;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin-bottom: 6px;
+
+  color: #111827;
+  font-size: 28px;
+}
+
+.header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.button {
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1d4ed8;
+}
+
+
+/* Summary Cards */
+
+.cards {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+
+  margin-bottom: 22px;
+}
+
+.card {
+  padding: 20px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.card span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.card strong {
+  color: #111827;
+
+  font-size: 24px;
+}
+
+
+/* Sections */
+
+.section {
+  margin-bottom: 20px;
+
+  padding: 20px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.section h2 {
+  margin-bottom: 18px;
+
+  color: #111827;
+
+  font-size: 17px;
+}
+
+.row {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 12px 0;
+
+  border-top: 1px solid #f1f5f9;
+
+  color: #475569;
+
+  font-size: 14px;
+}
+
+.row strong {
+  color: #111827;
+}
+
+
+/* Table */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+th {
+  padding: 12px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  text-align: left;
+
+  text-transform: uppercase;
+}
+
+td {
+  padding: 13px;
+
+  border-top: 1px solid #f1f5f9;
+
+  color: #475569;
+
+  font-size: 13px;
+}
+
+
+@media (max-width: 800px) {
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .page {
+    padding: 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+}

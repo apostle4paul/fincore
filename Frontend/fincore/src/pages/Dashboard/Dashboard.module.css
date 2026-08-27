@@ -1,0 +1,39 @@
+.dashboard {
+  min-height: calc(100vh);
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    url("https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/14935/production/_132977248_e95e681c-089a-446d-a3f5-1fd2a4d3df22.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  padding: 60px;
+}
+
+.content {
+  max-width: 600px;
+  color: white;
+}
+
+.content p {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.content h1 {
+  font-size: 52px;
+  line-height: 1.1;
+  margin: 15px 0 20px;
+}
+
+.content span {
+  font-size: 18px;
+  line-height: 1.6;
+}

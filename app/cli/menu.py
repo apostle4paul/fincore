@@ -1,4 +1,6 @@
 from app.cli.member_menu import member_menu
+from app.cli.transaction_menu import transaction_menu
+from app.cli.account_menu import account_menu
 
 
 def main_menu():
@@ -29,16 +31,10 @@ def main_menu():
             member_menu()
 
         elif choice == "2":
-
-            print(
-                "\nAccount Management "
-            )
+          account_menu()
 
         elif choice == "3":
-
-            print(
-                "\nTransaction Management "
-            )
+            transaction_menu()
 
         elif choice == "4":
 
