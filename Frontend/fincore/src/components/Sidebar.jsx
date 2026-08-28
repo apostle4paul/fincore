@@ -3,8 +3,7 @@ import {
   Users,
   WalletCards,
   ArrowLeftRight,
-  Landmark,
-  BarChart3
+  Landmark
 } from "lucide-react";
 
 import { NavLink } from "react-router-dom";
@@ -23,6 +22,7 @@ const Sidebar = () => {
         }
       ]
     },
+
     {
       title: "Banking",
       items: [
@@ -43,6 +43,7 @@ const Sidebar = () => {
         }
       ]
     },
+
     {
       title: "Credit",
       items: [
@@ -52,16 +53,6 @@ const Sidebar = () => {
           icon: Landmark
         }
       ]
-    },
-    {
-      title: "Analytics",
-      items: [
-        {
-          name: "Reports",
-          path: "/reports",
-          icon: BarChart3
-        }
-      ]
     }
   ];
 
@@ -69,7 +60,6 @@ const Sidebar = () => {
     <aside className={styles.sidebar}>
 
       {/* Logo */}
-
       <div className={styles.logo}>
 
         <div className={styles.logoMark}>
@@ -83,9 +73,7 @@ const Sidebar = () => {
 
       </div>
 
-
       {/* Navigation */}
-
       <nav className={styles.navigation}>
 
         {navigation.map((section) => (
@@ -113,6 +101,7 @@ const Sidebar = () => {
                     }`
                   }
                 >
+
                   <Icon size={19} />
 
                   <span>

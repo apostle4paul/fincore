@@ -1,1 +1,24 @@
-[]
+[
+    {
+        "loan_id": "L001",
+        "borrower": "M001",
+        "account_number": "A001",
+        "loan_type": "PERSONAL",
+        "amount": 10000.0,
+        "interest_rate": 0.1,
+        "duration": 12,
+        "status": "APPROVED",
+        "amount_paid": 1000.0
+    },
+    {
+        "loan_id": "L002",
+        "borrower": "M001",
+        "account_number": "A001",
+        "loan_type": "PERSONAL",
+        "amount": 40000.0,
+        "interest_rate": 0.1,
+        "duration": 1,
+        "status": "APPROVED",
+        "amount_paid": 20000.0
+    }
+]

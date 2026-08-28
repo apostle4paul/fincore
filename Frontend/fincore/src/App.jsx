@@ -11,7 +11,7 @@ import Members from "./pages/Members/Members";
 import Accounts from "./pages/Accounts/Accounts";
 import Transactions from "./pages/Transactions/Transactions";
 import Loans from "./pages/Loans/Loans";
-import Reports from "./pages/Reports/Reports";
+
 
 function App() {
   return (
@@ -47,11 +47,6 @@ function App() {
           <Route
             path="loans"
             element={<Loans />}
-          />
-
-          <Route
-            path="reports"
-            element={<Reports />}
           />
 
         </Route>

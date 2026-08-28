@@ -3,9 +3,9 @@ import axios from "axios";
 import { Plus, Search, Eye, Pencil, X } from "lucide-react";
 import styles from "./Members.module.css";
 
-const API_URL = "http://localhost:8000/members";
+const API_URL = "http://localhost:8000/members/members";
 
-function Members() {
+const Members = () => {
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
   const [showForm, setShowForm] = useState(false);
@@ -18,13 +18,13 @@ function Members() {
     email: ""
   });
 
-  // Get members
+  // Load members
   const getMembers = async () => {
     try {
       const response = await axios.get(API_URL);
       setMembers(response.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error loading members:", error);
     }
   };
 
@@ -44,7 +44,7 @@ function Members() {
     );
   });
 
-  // Input
+  // Form input
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -52,7 +52,7 @@ function Members() {
     });
   };
 
-  // Open add form
+  // Add member
   const addMember = () => {
     setEditing(false);
     setForm({
@@ -63,7 +63,7 @@ function Members() {
     setShowForm(true);
   };
 
-  // Open edit form
+  // Edit member
   const editMember = (member) => {
     setEditing(true);
     setSelectedMember(member);
@@ -77,7 +77,7 @@ function Members() {
     setShowForm(true);
   };
 
-  // Save / Update
+  // Save member
   const saveMember = async (e) => {
     e.preventDefault();
 
@@ -92,29 +92,40 @@ function Members() {
       }
 
       setShowForm(false);
+      setSelectedMember(null);
       getMembers();
+
     } catch (error) {
-      console.log(error);
-      alert("Something went wrong.");
+      console.error(error);
+      alert(
+        error.response?.data?.detail ||
+        "Something went wrong."
+      );
     }
   };
 
-  // Deactivate
+  // Deactivate member
   const deactivateMember = async (id) => {
-    if (!window.confirm("Deactivate this member?")) return;
+    if (!window.confirm("Deactivate this member?")) {
+      return;
+    }
 
     try {
       await axios.put(`${API_URL}/${id}/deactivate`);
       getMembers();
     } catch (error) {
-      console.log(error);
-      alert("Could not deactivate member.");
+      console.error(error);
+      alert(
+        error.response?.data?.detail ||
+        "Could not deactivate member."
+      );
     }
   };
 
   return (
     <div className={styles.page}>
 
+      {/* Header */}
       <div className={styles.header}>
         <div>
           <p className={styles.label}>BANKING</p>
@@ -131,6 +142,7 @@ function Members() {
         </button>
       </div>
 
+      {/* Search */}
       <div className={styles.toolbar}>
         <div className={styles.search}>
           <Search size={18} />
@@ -143,9 +155,9 @@ function Members() {
         </div>
       </div>
 
+      {/* Table */}
       <div className={styles.tableCard}>
         <table>
-
           <thead>
             <tr>
               <th>ID</th>
@@ -163,13 +175,9 @@ function Members() {
               <tr key={member.member_id}>
 
                 <td>{member.member_id}</td>
-
                 <td>{member.full_name}</td>
-
                 <td>{member.phone}</td>
-
                 <td>{member.email}</td>
-
                 <td>{member.date_joined}</td>
 
                 <td>
@@ -187,7 +195,9 @@ function Members() {
                 <td className={styles.actions}>
 
                   <button
-                    onClick={() => setSelectedMember(member)}
+                    onClick={() =>
+                      setSelectedMember(member)
+                    }
                     title="View"
                   >
                     <Eye size={17} />
@@ -212,11 +222,9 @@ function Members() {
                   )}
 
                 </td>
-
               </tr>
             ))}
           </tbody>
-
         </table>
 
         {filteredMembers.length === 0 && (
@@ -226,10 +234,9 @@ function Members() {
         )}
       </div>
 
-      {/* Add / Edit */}
+      {/* Add / Edit Form */}
       {showForm && (
         <div className={styles.overlay}>
-
           <div className={styles.modal}>
 
             <div className={styles.modalHeader}>
@@ -237,7 +244,9 @@ function Members() {
                 {editing ? "Edit Member" : "Add Member"}
               </h2>
 
-              <button onClick={() => setShowForm(false)}>
+              <button
+                onClick={() => setShowForm(false)}
+              >
                 <X />
               </button>
             </div>
@@ -269,21 +278,21 @@ function Members() {
                 required
               />
 
-              <button className={styles.saveButton}>
+              <button
+                className={styles.saveButton}
+                type="submit"
+              >
                 {editing ? "Update Member" : "Save Member"}
               </button>
 
             </form>
-
           </div>
-
         </div>
       )}
 
-      {/* View */}
+      {/* Member Details */}
       {selectedMember && !showForm && (
         <div className={styles.overlay}>
-
           <div className={styles.modal}>
 
             <div className={styles.modalHeader}>
@@ -297,12 +306,35 @@ function Members() {
             </div>
 
             <div className={styles.details}>
-              <p><strong>ID:</strong> {selectedMember.member_id}</p>
-              <p><strong>Name:</strong> {selectedMember.full_name}</p>
-              <p><strong>Phone:</strong> {selectedMember.phone}</p>
-              <p><strong>Email:</strong> {selectedMember.email}</p>
-              <p><strong>Date Joined:</strong> {selectedMember.date_joined}</p>
-              <p><strong>Status:</strong> {selectedMember.status}</p>
+              <p>
+                <strong>ID:</strong>{" "}
+                {selectedMember.member_id}
+              </p>
+
+              <p>
+                <strong>Name:</strong>{" "}
+                {selectedMember.full_name}
+              </p>
+
+              <p>
+                <strong>Phone:</strong>{" "}
+                {selectedMember.phone}
+              </p>
+
+              <p>
+                <strong>Email:</strong>{" "}
+                {selectedMember.email}
+              </p>
+
+              <p>
+                <strong>Date Joined:</strong>{" "}
+                {selectedMember.date_joined}
+              </p>
+
+              <p>
+                <strong>Status:</strong>{" "}
+                {selectedMember.status}
+              </p>
             </div>
 
             <button
@@ -313,12 +345,11 @@ function Members() {
             </button>
 
           </div>
-
         </div>
       )}
 
     </div>
   );
-}
+};
 
 export default Members;
