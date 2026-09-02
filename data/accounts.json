@@ -3,7 +3,7 @@
         "account_number": "A001",
         "member_id": "M001",
         "account_type": "SAVINGS",
-        "balance": 1040029.0,
+        "balance": 1008031.0,
         "status": "ACTIVE",
         "date_opened": "2026-08-26"
     },
@@ -11,7 +11,7 @@
         "account_number": "A002",
         "member_id": "M001",
         "account_type": "SAVINGS",
-        "balance": 4.0,
+        "balance": 1984.0,
         "status": "ACTIVE",
         "date_opened": "2026-08-26"
     },
@@ -19,7 +19,7 @@
         "account_number": "A003",
         "member_id": "M002",
         "account_type": "SAVINGS",
-        "balance": 0.0,
+        "balance": 100.0,
         "status": "ACTIVE",
         "date_opened": "2026-08-26"
     },
@@ -30,5 +30,21 @@
         "balance": 0.0,
         "status": "INACTIVE",
         "date_opened": "2026-08-26"
+    },
+    {
+        "account_number": "A005",
+        "member_id": "M001",
+        "account_type": "SAVINGS",
+        "balance": 0.0,
+        "status": "ACTIVE",
+        "date_opened": "2026-08-27"
+    },
+    {
+        "account_number": "A006",
+        "member_id": "M001",
+        "account_type": "SAVINGS",
+        "balance": 0.0,
+        "status": "ACTIVE",
+        "date_opened": "2026-08-28"
     }
 ]

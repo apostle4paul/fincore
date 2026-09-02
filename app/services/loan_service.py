@@ -98,7 +98,7 @@ class LoanService:
 
         return self.loan_repository.save(loan)
 
-    # 3. Approve loan
+    
     def approve_loan(self, loan_id):
 
         loan = self.loan_repository.get_by_id(
@@ -121,7 +121,7 @@ class LoanService:
 
         return self.loan_repository.update(loan)
 
-    # 3. Reject loan
+    
     def reject_loan(self, loan_id):
 
         loan = self.loan_repository.get_by_id(
@@ -138,7 +138,7 @@ class LoanService:
 
         return self.loan_repository.update(loan)
 
-    # 4. Calculate repayment
+    
     def get_loan(self, loan_id):
 
         loan = self.loan_repository.get_by_id(
@@ -150,7 +150,7 @@ class LoanService:
 
         return loan
 
-    # 5. Make payment
+    
     def make_payment(self, loan_id, amount):
 
         loan = self.get_loan(loan_id)

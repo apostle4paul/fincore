@@ -7,8 +7,8 @@
         "amount": 10000.0,
         "interest_rate": 0.1,
         "duration": 12,
-        "status": "APPROVED",
-        "amount_paid": 1000.0
+        "status": "PAID",
+        "amount_paid": 11000.0
     },
     {
         "loan_id": "L002",
@@ -18,7 +18,51 @@
         "amount": 40000.0,
         "interest_rate": 0.1,
         "duration": 1,
+        "status": "PAID",
+        "amount_paid": 44000.0
+    },
+    {
+        "loan_id": "L003",
+        "borrower": "M001",
+        "account_number": "A001",
+        "loan_type": "PERSONAL",
+        "amount": 200.0,
+        "interest_rate": 0.1,
+        "duration": 1,
+        "status": "REJECTED",
+        "amount_paid": 0.0
+    },
+    {
+        "loan_id": "L004",
+        "borrower": "M001",
+        "account_number": "A001",
+        "loan_type": "PERSONAL",
+        "amount": 700.0,
+        "interest_rate": 0.1,
+        "duration": 1,
+        "status": "PENDING",
+        "amount_paid": 0.0
+    },
+    {
+        "loan_id": "L005",
+        "borrower": "M001",
+        "account_number": "A001",
+        "loan_type": "PERSONAL",
+        "amount": 5000.0,
+        "interest_rate": 0.1,
+        "duration": 1,
         "status": "APPROVED",
-        "amount_paid": 20000.0
+        "amount_paid": 0.0
+    },
+    {
+        "loan_id": "L006",
+        "borrower": "M001",
+        "account_number": "A001",
+        "loan_type": "PERSONAL",
+        "amount": 100.0,
+        "interest_rate": 0.1,
+        "duration": 1,
+        "status": "PAID",
+        "amount_paid": 110.0
     }
 ]

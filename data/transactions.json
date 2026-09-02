@@ -108,5 +108,165 @@
         "description": "Loan payment",
         "timestamp": "2026-08-27T21:44:09",
         "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T012",
+        "account_number": "A002",
+        "transaction_type": "DEPOSIT",
+        "amount": 1000.0,
+        "balance_after": 1004.0,
+        "description": "Deposit",
+        "timestamp": "2026-08-27T21:59:29",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T013",
+        "account_number": "A002",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 20.0,
+        "balance_after": 984.0,
+        "description": "Withdrawal",
+        "timestamp": "2026-08-27T21:59:41",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T014",
+        "account_number": "A001",
+        "transaction_type": "DEPOSIT",
+        "amount": 12.0,
+        "balance_after": 1040041.0,
+        "description": "Deposit",
+        "timestamp": "2026-08-27T22:00:54",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T015",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 4000.0,
+        "balance_after": 1036041.0,
+        "description": "Loan payment",
+        "timestamp": "2026-08-27T22:01:18",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T016",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 5000.0,
+        "balance_after": 1031041.0,
+        "description": "Withdrawal",
+        "timestamp": "2026-08-27T22:56:49",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T017",
+        "account_number": "A001",
+        "transaction_type": "DEPOSIT",
+        "amount": 2000.0,
+        "balance_after": 1033041.0,
+        "description": "Deposit",
+        "timestamp": "2026-08-28T01:10:01",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T018",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 344.0,
+        "balance_after": 1032697.0,
+        "description": "Loan payment",
+        "timestamp": "2026-08-28T03:35:12",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T019",
+        "account_number": "A002",
+        "transaction_type": "DEPOSIT",
+        "amount": 1000.0,
+        "balance_after": 1984.0,
+        "description": "Deposit",
+        "timestamp": "2026-08-28T03:42:22",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T020",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 56.0,
+        "balance_after": 1032641.0,
+        "description": "Loan payment",
+        "timestamp": "2026-08-28T05:40:28",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T021",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 5600.0,
+        "balance_after": 1027041.0,
+        "description": "Loan payment",
+        "timestamp": "2026-08-28T05:41:01",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T022",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 4000.0,
+        "balance_after": 1023041.0,
+        "description": "Loan payment",
+        "timestamp": "2026-08-28T06:09:02",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T023",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 20000.0,
+        "balance_after": 1003041.0,
+        "description": "Loan payment",
+        "timestamp": "2026-08-28T06:09:35",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T024",
+        "account_number": "A001",
+        "transaction_type": "DEPOSIT",
+        "amount": 5000.0,
+        "balance_after": 1008041.0,
+        "description": "Loan approved",
+        "timestamp": "2026-08-28T06:09:59",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T025",
+        "account_number": "A003",
+        "transaction_type": "DEPOSIT",
+        "amount": 100.0,
+        "balance_after": 100.0,
+        "description": "Deposit",
+        "timestamp": "2026-08-28T07:30:50",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T026",
+        "account_number": "A001",
+        "transaction_type": "DEPOSIT",
+        "amount": 100.0,
+        "balance_after": 1008141.0,
+        "description": "Loan approved",
+        "timestamp": "2026-08-28T07:33:38",
+        "status": "COMPLETED"
+    },
+    {
+        "transaction_id": "T027",
+        "account_number": "A001",
+        "transaction_type": "WITHDRAWAL",
+        "amount": 110.0,
+        "balance_after": 1008031.0,
+        "description": "Loan payment",
+        "timestamp": "2026-08-28T07:34:00",
+        "status": "COMPLETED"
     }
 ]

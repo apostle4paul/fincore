@@ -1,7 +1,7 @@
 [
     {
         "member_id": "M001",
-        "full_name": "DAWITttttttt555 34262728",
+        "full_name": "DAWIt122",
         "phone": "0987623451",
         "email": "dawit23@gmail.com",
         "date_joined": "2026-08-24",
@@ -21,6 +21,46 @@
         "phone": "0948362718",
         "email": "mcmd@gmail.com",
         "date_joined": "2026-08-26",
+        "status": "INACTIVE"
+    },
+    {
+        "member_id": "M004",
+        "full_name": "mii",
+        "phone": "0941426789",
+        "email": "mee89@gmail.com",
+        "date_joined": "2026-08-27",
+        "status": "INACTIVE"
+    },
+    {
+        "member_id": "M005",
+        "full_name": "MD",
+        "phone": "0987654092",
+        "email": "mee89@gmail.com",
+        "date_joined": "2026-08-27",
+        "status": "INACTIVE"
+    },
+    {
+        "member_id": "M006",
+        "full_name": "kidus",
+        "phone": "0987654321",
+        "email": "mcmd@gmail.com",
+        "date_joined": "2026-08-27",
+        "status": "ACTIVE"
+    },
+    {
+        "member_id": "M007",
+        "full_name": "ma",
+        "phone": "0987654312",
+        "email": "nc@gmail.com",
+        "date_joined": "2026-08-28",
+        "status": "INACTIVE"
+    },
+    {
+        "member_id": "M008",
+        "full_name": "mn",
+        "phone": "0987654318",
+        "email": "mcmd@gmail.com",
+        "date_joined": "2026-08-28",
         "status": "ACTIVE"
     }
 ]
